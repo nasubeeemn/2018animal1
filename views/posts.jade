@@ -37,8 +37,8 @@ html(lang="jp")
             span #{post.id} : ID:#{originalTrackingId}
         div(class="panel-body")
           p(style="white-space:pre;") #{post.content}
-           p!= post.mapUrl
-          // p #{post.mapUrl} //エスケープ処理される
+          // p!= post.mapUrl //XSS脆弱性がある
+          p #{post.mapUrl} 
         div(class="panel-footer")
           div 投稿日時: #{post.formattedCreatedAt}
           - var isAdmin = (user === 'admin')
